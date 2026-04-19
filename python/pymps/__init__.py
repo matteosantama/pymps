@@ -1,4 +1,5 @@
 import dataclasses
+import os
 
 import numpy as np
 import scipy as sp
@@ -33,7 +34,7 @@ class QuadraticProgram:
     j: int
 
 
-def read_f64(filepath: str) -> QuadraticProgram:
+def read_f64(filepath: str | os.PathLike) -> QuadraticProgram:
     """Read an MPS file."""
     quadprog = _read_f64(filepath)
 

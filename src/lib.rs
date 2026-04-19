@@ -10,6 +10,7 @@ mod _pymps {
     use mps::types::ObjectiveSense;
     use pyo3::prelude::*;
     use std::fs;
+    use std::path::PathBuf;
 
     #[pymodule_export]
     use crate::errors::{ConversionError, MpsError, ParseError, UnsupportedMpsError};
@@ -17,7 +18,7 @@ mod _pymps {
     use crate::pymps::QuadraticProgram;
 
     #[pyfunction]
-    fn read_f64(filepath: String) -> PyResult<QuadraticProgram> {
+    fn read_f64(filepath: PathBuf) -> PyResult<QuadraticProgram> {
         let content = fs::read_to_string(&filepath)?;
 
         let parser =

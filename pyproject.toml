@@ -1,0 +1,39 @@
+[build-system]
+requires = ["maturin>=1.13,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "pymps"
+requires-python = ">=3.13"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+dynamic = ["version"]
+dependencies = [
+    "numpy>=1.24.4",
+    "scipy>=1.10.1",
+]
+
+[dependency-groups]
+dev = [
+    "black>=24.8.0",
+    "isort>=5.13.2",
+    "boto3>=1.35",
+    "boto3>=1.35",
+    "clarabel>=0.9",
+    "pooch>=1.8",
+    "pytest>=8",
+]
+
+[tool.maturin]
+python-source = "python"
+module-name = "pymps._pymps"
+features = ["pyo3/extension-module"]
+
+[tool.black]
+target-version = ["py313"]
+
+[tool.isort]
+profile = "black"
